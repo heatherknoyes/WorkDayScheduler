@@ -62,6 +62,10 @@ textarea {
   line-height: 2rem;
 }
 
+.textArea {
+  border: none;
+}
+
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
@@ -73,7 +77,12 @@ textarea {
   line-height: 3;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+.textArea:focus {
+  outline: none;
+  border: solid #06aed5;
 }

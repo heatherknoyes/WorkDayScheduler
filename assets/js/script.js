@@ -6,21 +6,15 @@ var endTime = 17;
 
 function createCalendar() {
   for (var i = startTime; i <= endTime; i++) {
-    var tod = i + "AM";
-
-    if (i > 12) {
-      tod = i - 12 + "PM";
-    } else if (i === 12) {
-      tod = 12 + "PM";
-    }
+    var hour = moment(i, "H").format("hA");
 
     calendarEl.append(`<div class="row">
-        <div class="col-1 hour">${tod}</div>
-        <div class="col-10" id="time${i}"></div>
+        <div class="col-1 hour">${hour}</div>
+        <input class="col-10 textArea" id="time${i}"></input>
         <i class="fas fa-save col-1 saveBtn"></i>
       </div>`);
 
-    colorCalendarBlocks();
+    colorCalendarBlocks(i);
   }
 }
 
@@ -35,7 +29,7 @@ function setToday() {
   currentDayEl.text(topDate);
 }
 
-function colorCalendarBlocks() {
+function colorCalendarBlocks(i) {
   if (i === now.hour()) {
     $(`#time${i}`).addClass("present");
   } else if (i > now.hour()) {
