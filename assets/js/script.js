@@ -64,10 +64,10 @@ $(".container").on("click", ".saveBtn", function (event) {
     event: rowItem.children(".event").val(),
   };
 
-  calendarItems.push(dayEvent);
-  console.log(calendarItems);
-
-  localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
+  if (dayEvent.event !== "") {
+    calendarItems.push(dayEvent);
+    localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
+  }
 });
 
 init();
