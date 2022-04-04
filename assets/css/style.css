@@ -46,28 +46,24 @@ textarea {
 
 .past {
   background-color: #d3d3d3;
-  color: white;
-  line-height: 2rem;
 }
 
 .present {
   background-color: #ff6961;
-  color: white;
-  line-height: 2rem;
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
-  line-height: 2rem;
 }
 
 .textArea {
   border: none;
+  color: #000000;
+  line-height: 2rem;
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  border-left: 1px solid #000000;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
