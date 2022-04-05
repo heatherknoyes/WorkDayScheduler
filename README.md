@@ -2,7 +2,7 @@
 
 ## Description
 
-The motivation for this project was to create a quiz game that helps the user practice their JavaScript knowledge. By using Web APIs, HTML, CSS, and JavaScript I was able to create a simple multi-screen game that the user can interact with. I learned how to create dynamic HTML elements with JavaScript in multiple screens while also using the users local storage in one instance of a game to keep a simple high score history. I also learned how to manipulate and handle user inputs to determine which screen should show next, how the timer and score is affected, and writing over initial HTML text to display different text dynamically as well. The thing I am most proud of with this project is that I was able to use my own design of screen switching to make elements appear and disappear without code reuse. With the completion of this project I fulfilled the following user acceptance criteria.
+The motivation for this project was to create a calendar that the user can edit and see the current time of day along with events that they have saved. By using jQuery, external APIs, HTML, CSS, and JavaScript I was able to create a dynamic one screen calendar that the user can interact with. I learned how to utilize dynamic HTML elements with jQuery and Javascript and used the users local storage in order to save and delete events without the defaulting the text of the screen for a single instance. The thing I am most proud of with this project is that I was able to implement a delete button to make the UI more user friendly even though it wasn't a part of the requirements. With the completion of this project I fulfilled the following minimum user acceptance criteria.
 
 ```md
 GIVEN I am using a daily planner to create a schedule
@@ -20,13 +20,7 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
-This project taught me how to use dynamic HTML building using Web APIs with JavaScript. In the future, I would try to incorporate a randomized selection of the questions. In addition, I would love to add better styling to the quiz to give feedback to the user for which questions they got right or which ones they missed. This would make the UX more appealing and intelligent than just a quiz and a score.
-
-## Your Task
-
-Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
-
-You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
+This project taught me how to utilize jQuery instead of vanilla JavaScript as well as other APIs like Moment.js in order to manipulate time. In the future, I would like to try to put a dynamic section where the user is able to input what their times for their calendar should be. I would add a submit button as the trigger for a new calendar creation and would try to keep the same events that had already been saved. I also want to try to be able to incorporate a click off functionality so that the event clears out unless you hit the save button.
 
 ## Installation
 
