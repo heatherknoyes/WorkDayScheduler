@@ -1,7 +1,7 @@
 var now = moment().local();
 var calendarItems = [];
-var startTime = 9;
-var endTime = 17;
+var startTime = 7;
+var endTime = 22;
 
 /* Defines the functions that load when the page is loaded */
 function init() {
