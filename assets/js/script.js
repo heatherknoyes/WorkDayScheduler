@@ -1,20 +1,25 @@
-var currentDayEl = $("#currentDay");
-var calendarEl = $(".container");
 var saveBtn = $(".saveBtn");
-var lineItemEl = $(".lineItem");
 var now = moment().local();
 var calendarItems = [];
 var startTime = 9;
 var endTime = 17;
 
+/* Defines the functions that load when the page is loaded */
+function init() {
+  setToday();
+  createCalendar();
+}
+
+/* Writes the html for the calendar to display on the page */
 function createCalendar() {
   for (var i = startTime; i <= endTime; i++) {
     var hour = moment(i, "H").format("hA");
 
-    calendarEl.append(`<div class="row lineItem">
-        <div class="col-1 hour">${hour}</div>
-        <input class="col-10 textArea event" id="time${i}"></input>
+    $(".container").append(`<div class="row lineItem">
+        <div class="col-1 hour" id="hour${i}">${hour}</div>
+        <input class="col-9 textArea event" id="time${i}"></input>
         <i class="fas fa-save col-1 saveBtn"></i>
+        <i class="fa fa-trash col-1 deleteBtn"></i>
       </div>`);
 
     colorCalendarBlocks(i);
@@ -22,26 +27,28 @@ function createCalendar() {
   fillCalendarEvents();
 }
 
-function init() {
-  setToday();
-  createCalendar();
-}
-
+/* Sets the current day at the top of the calendar */
 function setToday() {
   var topDate = now.format("dddd, MMMM Do");
-  currentDayEl.addClass("time-block");
-  currentDayEl.text(topDate);
+  $("#currentDay").addClass("time-block");
+  $("#currentDay").text(topDate);
 }
 
+/* Fills the calendar with the applicable events that have been saved for that time span */
 function fillCalendarEvents() {
   var calendarItems = localStorage.getItem("calendarItems");
   if (calendarItems) {
     var calendarItemsArray = JSON.parse(calendarItems);
 
-    console.log(calendarItemsArray);
+    calendarItemsArray.forEach(function (item) {
+      var time = moment(item.hour, "hA").format("H");
+      var idName = "#time" + time;
+      $(idName).val(item.event);
+    });
   }
 }
 
+/* Colors the time blocks based on the time of day */
 function colorCalendarBlocks(i) {
   if (i === now.hour()) {
     $(`#time${i}`).addClass("present");
@@ -52,10 +59,7 @@ function colorCalendarBlocks(i) {
   }
 }
 
-lineItemEl.on("focus", function (event) {
-  var target = event.target;
-});
-
+/* When the save button is clicked the item is saved to the local storage */
 $(".container").on("click", ".saveBtn", function (event) {
   var target = $(event.currentTarget);
   var rowItem = target.parent();
@@ -65,9 +69,30 @@ $(".container").on("click", ".saveBtn", function (event) {
   };
 
   if (dayEvent.event !== "") {
+    calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
     calendarItems.push(dayEvent);
     localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
   }
+});
+
+/* When the save button is clicked the item is saved to the local storage */
+$(".container").on("click", ".deleteBtn", function (event) {
+  var target = $(event.currentTarget);
+  var rowItem = target.parent();
+  var dayEvent = {
+    hour: rowItem.children(".hour").text(),
+    event: rowItem.children(".event").val(),
+  };
+
+  if (dayEvent.event !== "") {
+    calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
+    calendarItems.push(dayEvent);
+    localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
+  }
+});
+
+$(".lineItem").on("focus", function (event) {
+  var target = event.target;
 });
 
 init();

@@ -64,8 +64,8 @@ textarea {
 
 .saveBtn {
   border-left: 1px solid #000000;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  /* border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px; */
   background-color: #06aed5;
   color: white;
   font-size: 1.5rem;
@@ -76,6 +76,17 @@ textarea {
 .saveBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+.deleteBtn {
+  border-left: 1px solid #000000;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #e02e2e;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 3;
 }
 
 .textArea:focus {
