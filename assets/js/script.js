@@ -1,4 +1,3 @@
-var saveBtn = $(".saveBtn");
 var now = moment().local();
 var calendarItems = [];
 var startTime = 9;
@@ -15,7 +14,7 @@ function createCalendar() {
   for (var i = startTime; i <= endTime; i++) {
     var hour = moment(i, "H").format("hA");
 
-    $(".container").append(`<div class="row lineItem">
+    $(".container").append(`<div class="row">
         <div class="col-1 hour" id="hour${i}">${hour}</div>
         <input class="col-9 textArea event" id="time${i}"></input>
         <i class="fas fa-save col-1 saveBtn"></i>
@@ -29,9 +28,9 @@ function createCalendar() {
 
 /* Sets the current day at the top of the calendar */
 function setToday() {
-  var topDate = now.format("dddd, MMMM Do");
+  var todDate = now.format("dddd, MMMM Do");
   $("#currentDay").addClass("time-block");
-  $("#currentDay").text(topDate);
+  $("#currentDay").text(todDate);
 }
 
 /* Fills the calendar with the applicable events that have been saved for that time span */
@@ -59,6 +58,16 @@ function colorCalendarBlocks(i) {
   }
 }
 
+function eventExists(calendarItems, dayEvent) {
+  for (var i = 0; i < calendarItems.length; i++) {
+    if (calendarItems[i].hour === dayEvent.hour) {
+      i = calendarItems.length;
+      return true;
+    }
+  }
+  return false;
+}
+
 /* When the save button is clicked the item is saved to the local storage */
 $(".container").on("click", ".saveBtn", function (event) {
   var target = $(event.currentTarget);
@@ -68,14 +77,31 @@ $(".container").on("click", ".saveBtn", function (event) {
     event: rowItem.children(".event").val(),
   };
 
+  // Checks to make sure the event is not null
   if (dayEvent.event !== "") {
-    calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
-    calendarItems.push(dayEvent);
+    // Checks to make sure that calendarItems is not empty
+    if (calendarItems.length !== 0) {
+      calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
+
+      if (eventExists(calendarItems, dayEvent)) {
+        for (var i = 0; i < calendarItems.length; i++) {
+          if (calendarItems[i].hour === dayEvent.hour) {
+            calendarItems[i] = dayEvent;
+            i = calendarItems.length;
+          }
+        }
+      } else {
+        calendarItems.push(dayEvent);
+      }
+    } else {
+      calendarItems.push(dayEvent);
+    }
+
     localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
   }
 });
 
-/* When the save button is clicked the item is saved to the local storage */
+/* When the delete button is clicked the item is removed from the local storage */
 $(".container").on("click", ".deleteBtn", function (event) {
   var target = $(event.currentTarget);
   var rowItem = target.parent();
@@ -84,15 +110,17 @@ $(".container").on("click", ".deleteBtn", function (event) {
     event: rowItem.children(".event").val(),
   };
 
-  if (dayEvent.event !== "") {
-    calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
-    calendarItems.push(dayEvent);
-    localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
+  if (eventExists(calendarItems, dayEvent)) {
+    for (var i = 0; i < calendarItems.length; i++) {
+      if (calendarItems[i].hour === dayEvent.hour) {
+        calendarItems.splice(i, 1);
+        rowItem.children(".event").val("");
+        i = calendarItems.length;
+      }
+    }
   }
-});
 
-$(".lineItem").on("focus", function (event) {
-  var target = event.target;
+  localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
 });
 
 init();
