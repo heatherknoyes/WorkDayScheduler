@@ -1,20 +1,8 @@
 # Work Day Scheduler
 
-## Your Task
+## Description
 
-Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
-
-You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
-
-## User Story
-
-```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
-
-## Acceptance Criteria
+The motivation for this project was to create a quiz game that helps the user practice their JavaScript knowledge. By using Web APIs, HTML, CSS, and JavaScript I was able to create a simple multi-screen game that the user can interact with. I learned how to create dynamic HTML elements with JavaScript in multiple screens while also using the users local storage in one instance of a game to keep a simple high score history. I also learned how to manipulate and handle user inputs to determine which screen should show next, how the timer and score is affected, and writing over initial HTML text to display different text dynamically as well. The thing I am most proud of with this project is that I was able to use my own design of screen switching to make elements appear and disappear without code reuse. With the completion of this project I fulfilled the following user acceptance criteria.
 
 ```md
 GIVEN I am using a daily planner to create a schedule
@@ -32,68 +20,30 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
-The following animation demonstrates the application functionality:
+This project taught me how to use dynamic HTML building using Web APIs with JavaScript. In the future, I would try to incorporate a randomized selection of the questions. In addition, I would love to add better styling to the quiz to give feedback to the user for which questions they got right or which ones they missed. This would make the UX more appealing and intelligent than just a quiz and a score.
 
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+## Your Task
 
-## Grading Requirements
+Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
-> **Note**: If a homework assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> - A repository that has no code
->
-> - A repository that includes a unique name but nothing else
->
-> - A repository that includes only a README file but nothing else
->
-> - A repository that only includes starter code
+You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
 
-This homework is graded based on the following criteria:
+## Installation
 
-### Technical Acceptance Criteria: 40%
+1. Download all files within the main directory as well as the assets directory to your device.
 
-- Satisfies all of the above acceptance criteria plus the following:
+2. Open the index.html file in your browser to view the website.
 
-  - Uses a date utility library to work with date and time
+3. If future edits need to be made then the stylesheet can be found under ./assets/css/style.css. The JavaScript can be found under the ./assets/js/script.js.
 
-### Deployment: 32%
+## Usage
 
-- Application deployed at live URL
+The following image shows the web application's appearance in a gif:
 
-- Application loads with no errors
+![The calendar webpage functionality in a GIF.](./assets/images/QuizGIF.gif)
 
-- Application GitHub URL submitted
+You can view the deployed application here: https://heatherknoyes.github.io/WorkDayScheduler/
 
-- GitHub repo contains application code
+## License
 
-### Application Quality: 15%
-
-- Application user experience is intuitive and easy to navigate
-
-- Application user interface style is clean and polished
-
-- Application resembles the mock-up functionality provided in the homework instructions
-
-### Repository Quality: 13%
-
-- Repository has a unique name
-
-- Repository follows best practices for file structure and naming conventions
-
-- Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-- Repository contains multiple descriptive commit messages
-
-- Repository contains quality README file with description, screenshot, and link to deployed application
-
-## Review
-
-You are required to submit the following for review:
-
-- The URL of the deployed application
-
-- The URL of the GitHub repository, with a unique name and a README describing the project
-
----
-
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+No license.
