@@ -34,7 +34,7 @@ This project taught me how to utilize jQuery instead of vanilla JavaScript as we
 
 The following image shows the web application's appearance in a gif:
 
-![The calendar webpage functionality in a GIF.](./assets/images/QuizGIF.gif)
+![The calendar webpage functionality in a GIF.](./assets/images/WorkDaySchedulerGIF.gif)
 
 You can view the deployed application here: https://heatherknoyes.github.io/WorkDayScheduler/
 
