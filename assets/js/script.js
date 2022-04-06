@@ -36,7 +36,7 @@ function setToday() {
 /* Fills the calendar with the applicable events that have been saved for that time span */
 function fillCalendarEvents() {
   calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
-  if (calendarItems.length !== 0) {
+  if (calendarItems) {
     calendarItems.forEach(function (item) {
       var time = moment(item.hour, "hA").format("H");
       var idName = "#time" + time;
