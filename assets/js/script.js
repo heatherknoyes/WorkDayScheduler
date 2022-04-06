@@ -35,11 +35,9 @@ function setToday() {
 
 /* Fills the calendar with the applicable events that have been saved for that time span */
 function fillCalendarEvents() {
-  var calendarItems = localStorage.getItem("calendarItems");
-  if (calendarItems) {
-    var calendarItemsArray = JSON.parse(calendarItems);
-
-    calendarItemsArray.forEach(function (item) {
+  calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
+  if (calendarItems.length !== 0) {
+    calendarItems.forEach(function (item) {
       var time = moment(item.hour, "hA").format("H");
       var idName = "#time" + time;
       $(idName).val(item.event);
@@ -110,12 +108,17 @@ $(".container").on("click", ".deleteBtn", function (event) {
     event: rowItem.children(".event").val(),
   };
 
-  if (eventExists(calendarItems, dayEvent)) {
-    for (var i = 0; i < calendarItems.length; i++) {
-      if (calendarItems[i].hour === dayEvent.hour) {
-        calendarItems.splice(i, 1);
-        rowItem.children(".event").val("");
-        i = calendarItems.length;
+  // Checks to make sure that calendarItems is not empty
+  if (calendarItems.length !== 0) {
+    calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
+
+    if (eventExists(calendarItems, dayEvent)) {
+      for (var i = 0; i < calendarItems.length; i++) {
+        if (calendarItems[i].hour === dayEvent.hour) {
+          calendarItems.splice(i, 1);
+          rowItem.children(".event").val("");
+          i = calendarItems.length;
+        }
       }
     }
   }
