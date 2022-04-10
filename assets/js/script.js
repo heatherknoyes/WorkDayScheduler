@@ -78,21 +78,22 @@ $(".container").on("click", ".saveBtn", function (event) {
   // Checks to make sure the event is not null
   if (dayEvent.event !== "") {
     // Checks to make sure that calendarItems is not empty
-    if (calendarItems.length !== 0) {
-      calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
-
-      if (eventExists(calendarItems, dayEvent)) {
-        for (var i = 0; i < calendarItems.length; i++) {
-          if (calendarItems[i].hour === dayEvent.hour) {
-            calendarItems[i] = dayEvent;
-            i = calendarItems.length;
+    calendarItems = JSON.parse(localStorage.getItem("calendarItems"));
+    if (calendarItems) {
+      if (calendarItems.length !== 0) {
+        if (eventExists(calendarItems, dayEvent)) {
+          for (var i = 0; i < calendarItems.length; i++) {
+            if (calendarItems[i].hour === dayEvent.hour) {
+              calendarItems[i] = dayEvent;
+              i = calendarItems.length;
+            }
           }
+        } else {
+          calendarItems.push(dayEvent);
         }
-      } else {
-        calendarItems.push(dayEvent);
       }
     } else {
-      calendarItems.push(dayEvent);
+      calendarItems = [dayEvent];
     }
 
     localStorage.setItem("calendarItems", JSON.stringify(calendarItems));
