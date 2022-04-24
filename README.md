@@ -40,4 +40,4 @@ You can view the deployed application here: https://heatherknoyes.github.io/Work
 
 ## License
 
-No license.
+Distributed under the MIT License. See LICENSE.txt for more information.
